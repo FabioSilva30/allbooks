@@ -20,3 +20,4 @@ server.use(router) //rotas na prota 3000
 server.listen(8000, () => {
     console.log("API está disponivel em pela terceira vez http://localhost:8000")
 })
+
