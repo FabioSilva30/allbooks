@@ -6,7 +6,7 @@ const { emailExiste, usuarioExiste } = require('../services/userService')
 const { createToken } = require('../services/authService')
 let { userDB } = require('../config/database')
 
-server.post('/registrar', async (req, res) => {
+server.post('/cadastrar', async(req, res) => {
     const { email, senha, nome, endereco, complemento, cep } = req.body;
 
     if (emailExiste(email)) {
@@ -56,14 +56,13 @@ server.post('/login', (req, res) => {
         return
     }
     const access_token = createToken({ email, senha })
-    let user = { ...userDB.usuarios.find(user => user.email === email && user.senha === senha) }
+    let user = {...userDB.usuarios.find(user => user.email === email && user.senha === senha) }
     delete user.senha
     res.status(200).json({ access_token, user })
 })
 
 server.get('/lancamentos', (req, res) => {
-    res.status(200).json([
-        {
+    res.status(200).json([{
             "id": 4,
             "categoria": 3,
             "titulo": "Bootstrap 4",
@@ -74,8 +73,7 @@ server.get('/lancamentos', (req, res) => {
             "publicacao": "2018-05-01",
             "imagemCapa": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/bootstrap4.png",
             "autor": 4,
-            "opcoesCompra": [
-                {
+            "opcoesCompra": [{
                     "id": 1,
                     "titulo": "E-book",
                     "preco": 29.9,
@@ -114,8 +112,7 @@ server.get('/lancamentos', (req, res) => {
             "publicacao": "2017-08-01",
             "imagemCapa": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/cangaceirojavascript.png",
             "autor": 5,
-            "opcoesCompra": [
-                {
+            "opcoesCompra": [{
                     "id": 1,
                     "titulo": "E-book",
                     "preco": 29.9,
@@ -154,8 +151,7 @@ server.get('/lancamentos', (req, res) => {
             "publicacao": "2015-06-01",
             "imagemCapa": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/css.png",
             "autor": 6,
-            "opcoesCompra": [
-                {
+            "opcoesCompra": [{
                     "id": 1,
                     "titulo": "E-book",
                     "preco": 29.9,
@@ -187,8 +183,7 @@ server.get('/lancamentos', (req, res) => {
 })
 
 server.get('/mais-vendidos', (req, res) => {
-    res.status(200).json([
-        {
+    res.status(200).json([{
             "id": 1,
             "categoria": 3,
             "titulo": "Acessibilidade na Web",
@@ -199,8 +194,7 @@ server.get('/mais-vendidos', (req, res) => {
             "publicacao": "2020-04-01",
             "imagemCapa": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/acessibilidade.png",
             "autor": 1,
-            "opcoesCompra": [
-                {
+            "opcoesCompra": [{
                     "id": 1,
                     "titulo": "E-book",
                     "preco": 29.9,
@@ -239,8 +233,7 @@ server.get('/mais-vendidos', (req, res) => {
             "publicacao": "2019-11-01",
             "imagemCapa": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/angular.png",
             "autor": 2,
-            "opcoesCompra": [
-                {
+            "opcoesCompra": [{
                     "id": 1,
                     "titulo": "E-book",
                     "preco": 29.9,
@@ -279,8 +272,7 @@ server.get('/mais-vendidos', (req, res) => {
             "publicacao": "2021-10-01",
             "imagemCapa": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/arquitetura.png",
             "autor": 3,
-            "opcoesCompra": [
-                {
+            "opcoesCompra": [{
                     "id": 1,
                     "titulo": "E-book",
                     "preco": 29.9,
